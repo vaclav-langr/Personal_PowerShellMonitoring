@@ -24,13 +24,16 @@ namespace PowershellMonitor
 
             foreach (Client c in clients)
             {
-                c.addOperation(new Operations.UpdateStatus());
-                c.addOperation(new Operations.UpdateStartType());
+                c.addOperation(SingletonFactory.getOperation("UpdateStatus"));
+                c.addOperation(SingletonFactory.getOperation("UpdateStartType"));
+                c.addOperation(SingletonFactory.getOperation("DownloadSpeed"));
+                c.addOperation(SingletonFactory.getOperation("UploadSpeed"));
             }
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            timer1_Tick(null, null);
             timer1.Enabled = true;
         }
 

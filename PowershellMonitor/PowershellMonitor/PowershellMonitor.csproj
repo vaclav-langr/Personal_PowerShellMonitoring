@@ -58,10 +58,13 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Operation.cs" />
+    <Compile Include="Operations\UploadSpeed.cs" />
+    <Compile Include="Operations\DownloadSpeed.cs" />
     <Compile Include="Operations\UpdateStartType.cs" />
     <Compile Include="Operations\UpdateStatus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingletonFactory.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
