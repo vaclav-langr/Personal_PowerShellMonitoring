@@ -12,15 +12,24 @@ using System.Collections.ObjectModel;
 using System.Security;
 using System.Management.Automation.Runspaces;
 using System.Diagnostics;
+using PowershellMonitor.UserControls;
 
 namespace PowershellMonitor
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
+        Overview overview = new Overview();
+
         List<Client> clients = new List<Client>();
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
+
+            //////////////////////////
+            panelOverview.Controls.Add(overview);
+            overview.Dock = DockStyle.Fill;
+            overview.Show();
+            //////////////////////////
 
             foreach (Client c in clients)
             {
@@ -84,6 +93,29 @@ namespace PowershellMonitor
                     }
                 }
             }
+        }
+
+        List<bool> listOfStatus = new List<bool> { true, false };
+        List<string> listOfServiceStatus = new List<string> { "running", "starting", "stopping", "stopped" };
+        List<int> listOfDownSpeed = new List<int> { 10, 12, 15, 18, 20, 22, 24, 26, 28, 30, 34, 38, 40, 50, 55, 68, 78, 83, 90 };
+        List<int> listOfUpSpeed = new List<int> { 2, 4, 6, 8, 10, 12, 16, 18, 20, 21, 25, 28, 34, 38, 42, 50 };
+        static Random random = new Random();
+
+        private void ButtonAdd_Click(object sender, EventArgs e)
+        {
+            bool status = listOfStatus[random.Next(listOfStatus.Count)];
+            string serviceStatus = listOfServiceStatus[random.Next(listOfServiceStatus.Count)];
+            string stationName = "Station " + random.Next(1, 99);
+            int downloadSpeed = listOfDownSpeed[random.Next(listOfDownSpeed.Count)];
+            int uploadSpeed = listOfUpSpeed[random.Next(listOfUpSpeed.Count)];
+
+            PowerShellStation powerShellStation = new PowerShellStation(status, serviceStatus, stationName, downloadSpeed, uploadSpeed);
+            overview.AddStation(powerShellStation);
+        }
+
+        private void ButtonClear_Click(object sender, EventArgs e)
+        {
+            overview.ClearStations();
         }
     }
 }
