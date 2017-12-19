@@ -12,8 +12,8 @@ namespace PowershellMonitor
         /// Gets data from runspace.
         /// </summary>
         /// <param name="rs">Runspace of operation</param>
-        /// <returns>List of keys(name of property) and its values</returns>
-        abstract public List<KeyValuePair<string, string>> doOperation(Runspace rs);
+        /// <returns>Key - name of operation, Value - wanted value of something</returns>
+        abstract public KeyValuePair<string, string> doOperation(Runspace rs);
 
         /// <summary>
         /// Name of the operation

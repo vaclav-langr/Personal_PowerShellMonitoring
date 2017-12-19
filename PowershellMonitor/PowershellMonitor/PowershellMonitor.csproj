@@ -58,7 +58,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Operation.cs" />
-    <Compile Include="Operations\ServicesStatus.cs" />
     <Compile Include="Operations\UpdateStartType.cs" />
     <Compile Include="Operations\UpdateStatus.cs" />
     <Compile Include="Program.cs" />

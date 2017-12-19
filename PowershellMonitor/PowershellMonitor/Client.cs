@@ -27,11 +27,11 @@ namespace PowershellMonitor
         public string ClientName {
             get
             {
-                return this._clientName;
+                return _clientName;
             }
             private set
             {
-                this._clientName = value;
+                _clientName = value;
             }
         }
 
@@ -39,11 +39,11 @@ namespace PowershellMonitor
         {
             get
             {
-                return this._ssl;
+                return _ssl;
             }
             set
             {
-                this._ssl = value;
+                _ssl = value;
             }
         }
 
@@ -51,13 +51,13 @@ namespace PowershellMonitor
         {
             get
             {
-                return this._port;
+                return _port;
             }
             set
             {
                 if(value > 0)
                 {
-                    this._port = value;
+                    _port = value;
                 }
             }
         }
@@ -66,42 +66,46 @@ namespace PowershellMonitor
         {
             get
             {
-                return this._userName;
+                return _userName;
             }
             private set
             {
-                this._userName = value;
+                _userName = value;
             }
         }
 
         private void setPassword(string password)
         {
-            this._password = new SecureString();
+            _password = new SecureString();
             for(int i = 0; i < password.Length; i++)
             {
-                this._password.AppendChar(password[i]);
+                _password.AppendChar(password[i]);
             }
         } 
 
         public bool isOnline()
         {
             Ping p = new Ping();
-            PingReply pr = p.Send(this.ClientName);
+            PingReply pr = p.Send(ClientName);
             return pr.Status == IPStatus.Success;
         }
 
-        public Dictionary<string, List<KeyValuePair<string, string>>> updateInfo()
+        public List<KeyValuePair<string, string>> updateInfo()
         {
-            Dictionary<string, List<KeyValuePair<string, string>>> data = new Dictionary<string, List<KeyValuePair<string, string>>>();
+            List<KeyValuePair<string, string>> data = new List<KeyValuePair<string, string>>();
+            if (!isOnline())
+            {
+                return data;
+            }
 
-            PSCredential rc = new PSCredential(this.Username, this._password);
-            WSManConnectionInfo ci = new WSManConnectionInfo(this.SSL, this.ClientName, this.Port, this._appName, this._uri, rc);
+            PSCredential rc = new PSCredential(Username, _password);
+            WSManConnectionInfo ci = new WSManConnectionInfo(SSL, ClientName, Port, _appName, _uri, rc);
 
             foreach (Operation o in operations)
             {
                 var runspace = RunspaceFactory.CreateRunspace(ci);
                 var result = o.doOperation(runspace);
-                data.Add(o.getName(), result);
+                data.Add(result);
             }
             return data;
         }

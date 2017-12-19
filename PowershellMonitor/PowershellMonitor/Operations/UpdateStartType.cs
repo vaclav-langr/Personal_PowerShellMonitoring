@@ -11,9 +11,9 @@ namespace PowershellMonitor.Operations
 {
     class UpdateStartType : Operation
     {
-        public override List<KeyValuePair<string, string>> doOperation(Runspace rs)
+        public override KeyValuePair<string, string> doOperation(Runspace rs)
         {
-            List<KeyValuePair<string, string>> result = new List<KeyValuePair<string, string>>();
+            KeyValuePair<string, string> result = new KeyValuePair<string, string>(getName(), "NotFound!");
 
             PowerShell ps = openConnection(rs);
             ps.AddScript("Get-Service | select name, starttype");
@@ -22,7 +22,7 @@ namespace PowershellMonitor.Operations
             {
                 if (o.Properties["name"].Value.ToString().Equals("wuauserv"))
                 {
-                    result.Add(new KeyValuePair<string, string>(o.Properties["name"].Value.ToString(), o.Properties["starttype"].Value.ToString()));
+                    result = new KeyValuePair<string, string>(getName(), o.Properties["starttype"].Value.ToString());
                 }
             }
             closeConnection();
