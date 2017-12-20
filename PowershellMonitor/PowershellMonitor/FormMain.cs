@@ -88,13 +88,16 @@ namespace PowershellMonitor
         {
             foreach (KeyValuePair<Client, BackgroundWorker> kvp in clients)
             {
-                kvp.Value.RunWorkerAsync(kvp.Key);
+                if (!kvp.Value.IsBusy) {
+                    kvp.Value.RunWorkerAsync(kvp.Key);
+                }
             }
         }
 
         public void SettingsForm_Closing()
         {
             refreshClientsList();
+            timer1.Enabled = true;
         }
 
         private void refreshClientsList()
