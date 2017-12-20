@@ -49,9 +49,9 @@
             this.labelSpeedDown.ForeColor = System.Drawing.Color.White;
             this.labelSpeedDown.Location = new System.Drawing.Point(291, 12);
             this.labelSpeedDown.Name = "labelSpeedDown";
-            this.labelSpeedDown.Size = new System.Drawing.Size(70, 22);
+            this.labelSpeedDown.Size = new System.Drawing.Size(64, 22);
             this.labelSpeedDown.TabIndex = 2;
-            this.labelSpeedDown.Text = "50 MB/s";
+            this.labelSpeedDown.Text = "50 kB/s";
             // 
             // labelSpeedUp
             // 
@@ -60,9 +60,9 @@
             this.labelSpeedUp.ForeColor = System.Drawing.Color.White;
             this.labelSpeedUp.Location = new System.Drawing.Point(436, 12);
             this.labelSpeedUp.Name = "labelSpeedUp";
-            this.labelSpeedUp.Size = new System.Drawing.Size(70, 22);
+            this.labelSpeedUp.Size = new System.Drawing.Size(64, 22);
             this.labelSpeedUp.TabIndex = 3;
-            this.labelSpeedUp.Text = "12 MB/s";
+            this.labelSpeedUp.Text = "12 kB/s";
             // 
             // labelStationName
             // 
@@ -72,7 +72,7 @@
             this.labelStationName.Name = "labelStationName";
             this.labelStationName.Size = new System.Drawing.Size(120, 22);
             this.labelStationName.TabIndex = 4;
-            this.labelStationName.Text = "Notebook";
+            this.labelStationName.Text = "10.0.0.27";
             // 
             // pictureBoxStatus
             // 

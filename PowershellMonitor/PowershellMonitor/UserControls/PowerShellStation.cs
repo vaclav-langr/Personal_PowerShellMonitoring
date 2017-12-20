@@ -30,6 +30,9 @@ namespace PowershellMonitor.UserControls
         private Label textDownloadSpeed;
         private Label textUploadSpeed;
 
+        // Variables
+        private const string defaultSpeedUnit = "kB/s";
+
         /// <summary>
         /// Create new PowerShellStation visual component
         /// </summary>
@@ -100,7 +103,7 @@ namespace PowershellMonitor.UserControls
         public void SetDownloadSpeed(int downloadSpeed)
         {
             this.DownloadSpeed = downloadSpeed;
-            textDownloadSpeed.Text = downloadSpeed + " kB/s";
+            textDownloadSpeed.Text = downloadSpeed + " " + defaultSpeedUnit;
         }
 
         /// <summary>
@@ -110,7 +113,7 @@ namespace PowershellMonitor.UserControls
         public void SetUploadSpeed(int uploadSpeed)
         {
             this.UploadSpeed = uploadSpeed;
-            textUploadSpeed.Text = uploadSpeed + " kB/s";
+            textUploadSpeed.Text = uploadSpeed + " " + defaultSpeedUnit;
         }
 
         /// <summary>
@@ -140,6 +143,11 @@ namespace PowershellMonitor.UserControls
             }
         }
 
+        /// <summary>
+        /// Compare THIS object to second one and return true when equals
+        /// </summary>
+        /// <param name="other">Second PowerShellStation object to compare with called object</param>
+        /// <returns>True when PowerShellStation is equal</returns>
         public bool Equals(PowerShellStation other)
         {
             return StationName.Equals(other.StationName);

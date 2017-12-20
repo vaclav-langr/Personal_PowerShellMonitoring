@@ -17,7 +17,7 @@ namespace PowershellMonitor
         {
             InitializeComponent();
 
-            refreshClientsList();
+            RefreshClientsList();
 
             //////////////////////////
             panelOverview.Controls.Add(overview);
@@ -32,18 +32,18 @@ namespace PowershellMonitor
                 kvp.Key.addOperation(new Operations.DownloadSpeed());
                 kvp.Key.addOperation(new Operations.UploadSpeed());
 
-                kvp.Value.DoWork += backgroundWorker_DoWork;
-                kvp.Value.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted;
+                kvp.Value.DoWork += BackgroundWorker_DoWork;
+                kvp.Value.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
             }
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            timer1_Tick(null, null);
+            Timer1_Tick(null, null);
             timer1.Enabled = true;
         }
 
-        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             Client c = (Client)e.Argument;
 
@@ -54,7 +54,7 @@ namespace PowershellMonitor
             e.Result = result;
         }
 
-        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             PowerShellStation pss = new PowerShellStation(false, "", "", -1, -1);
             foreach(KeyValuePair<string, string> kvp in (List<KeyValuePair<string, string>>)e.Result)
@@ -84,7 +84,7 @@ namespace PowershellMonitor
             overview.AddOrUpdateStation(pss);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             foreach (KeyValuePair<Client, BackgroundWorker> kvp in clients)
             {
@@ -94,10 +94,10 @@ namespace PowershellMonitor
 
         public void SettingsForm_Closing()
         {
-            refreshClientsList();
+            RefreshClientsList();
         }
 
-        private void refreshClientsList()
+        private void RefreshClientsList()
         {
             List<string> users = Properties.Settings.Default.users.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             string[] data;
