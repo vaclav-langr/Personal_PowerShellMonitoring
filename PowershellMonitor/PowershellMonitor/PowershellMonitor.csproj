@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,11 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Operation.cs" />
     <Compile Include="Operations\UploadSpeed.cs" />
@@ -65,8 +68,20 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingletonFactory.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UserControls\Overview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Overview.Designer.cs">
+      <DependentUpon>Overview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PowerShellStation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PowerShellStation.Designer.cs">
+      <DependentUpon>PowerShellStation.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,7 +91,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\Overview.resx">
+      <DependentUpon>Overview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PowerShellStation.resx">
+      <DependentUpon>PowerShellStation.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +111,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon.ico" />
+    <None Include="Resources\ic_running_white_48dp_2x.png" />
+    <None Include="Resources\ic_pause_white_48dp_2x.png" />
+    <None Include="Resources\ic_down_white_48dp_2x.png" />
+    <None Include="Resources\ic_up_white_48dp_2x.png" />
+    <None Include="Resources\ic_call_received_white_48dp_2x.png" />
+    <None Include="Resources\ic_call_made_white_48dp_2x.png" />
+    <None Include="Resources\ic_autorenew_white_48dp_2x.png" />
+    <None Include="Resources\ic_fiber_manual_off_white_48dp_2x.png" />
+    <None Include="Resources\ic_fiber_manual_on_white_48dp_2x.png" />
+    <None Include="Resources\ic_arrow_drop_up_white_48dp_2x.png" />
+    <None Include="Resources\ic_arrow_drop_down_white_48dp_2x.png" />
+    <None Include="Resources\ic_keyboard_arrow_down_white_48dp_2x.png" />
+    <None Include="Resources\ic_arrow_downward_white_48dp_2x.png" />
+    <None Include="Resources\ic_arrow_upward_white_48dp_1x.png" />
+    <None Include="Resources\ic_keyboard_arrow_up_white_48dp_2x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

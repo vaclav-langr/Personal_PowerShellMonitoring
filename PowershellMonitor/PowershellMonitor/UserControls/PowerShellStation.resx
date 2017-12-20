@@ -117,44 +117,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBoxStatus.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAANASURBVHhe7dFBcuIADETRHGDu
+        f11GpghlxCfwIRHG0uIt0hjT6nwdDofxRhiOOhiOOhiOOhiOOhiOOhiOOhiOOhiOOhiOOhiOOhiOOhiO
+        OhiOOhiOOhiOOhgaX4d/fyl+5GX03l9DmxgYGlTqRfHiP0W/+TTaxMDQoFJPiheWog4abWJgaFApKV70
+        VtTpYbSJgaFBpR4UL9gU6ngXbWJgaFCpB8SXN4m6/og2MTA0qNQd8cVNo8430SYGhgaVuiG+8FHohiu0
+        iYGhQaVAPPyR6JYLtImBoUGlknjwo9FNZ7SJgaFBpVbioV2g245oEwNDg0qtxEO7QLcd0SYGhgaVOokH
+        doVuxE0MDA0qFeLDXbq6lTYxMDSgVHywaxf30iYGhkYuFOKDXbu4lzYxMDRSoQhbON9MmxgYGusyIcIW
+        zjfTJgaGxqpMBK3MP+DNNvUPiD9awk0MDI2lRCrVCW5iYGgsJVKpTnATA0MDSnWCmxgYGlCqlbyHhaFB
+        pTrJe1gYGlSqk7yHhaFBpTrJe1gYGlSqk7yHhaFBpTrJe1gYGlSqk7yHhaFBpTrJe1gYGlSqk7yHhaFB
+        pTrJe1gYGlSqk7yHhaFBpTrJe1gYGlSqk7yHhaFBpTrJe1gYGlSqk7yHhaFBpTrJe1gYGlGi8z8BNzEw
+        NJYSqVQnuImBobGUSKU6wU0MDI2lRCrVCW5iYGgsJU4iaOV4N21iYGh8FzmV6mRz/4BFhC2cb6ZNDAyN
+        dZkQYQvnm2kTA0NjXeYkPti1i3tpEwNDIxcK8cGuXdxLmxgYGrnQSXy4S1e30iYGhgaVOokHdoVuxE0M
+        DA0qtRIP7QLddkSbGBgaVGolHtoFuu2INjEwNKhUEg9+NLrpjDYxMDSoFIiHPxLdcoE2MTA0qNQN8YWP
+        QjdcoU0MDA0qdUd8cdOo8020iYGhQaUeEF/eJOr6I9rEwNCgUg+KF2wKdbyLNjEwNKiUFC96K+r0MNrE
+        wNCgUk+KF5aiDhptYmBoUKkXxYv/FP3m02gTA0ODSv2y+KGX0Dt/DW1iYDjqYDjqYDjqYDjqYDjqYDjq
+        YDjqYDjqYDjqYDjqYDjqYDjqYDjqYDjqYDjqYDiqHL7+AzkNcjIJ4+1LAAAAAElFTkSuQmCC
+</value>
   </data>
-  <data name="ic_arrow_downward_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_arrow_downward_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pictureBoxSpeedDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABGdBTUEAALGPC/xhBQAAAa9JREFUeF7t
+        1OtNw0AQReH8pIwATfEqFgpBBPpA5t5oVgrIScb22g6b80krRXnYnjOIDQAAAAAAAAAAAAAAAAAAAAAA
+        wBhd193Ey4txic80Cw16r/Oh8xBvrU7P8qLzrrONt9qkAe90vnTsW2f1JegZHN/PYjudNpegwQ7jF6su
+        Qfc+jF+0twQN5Pifnq7HKkvQPfviF+0sQYPc6hyLXyy6BN3rOe55ShtL0BBv+3HOW2QJukcmfvEaP/u/
+        NMRWx39NGbMuQdceEr+pf0OrL0HXvM74hQeKwTKqLkHXeoprZrQXv/BgMWBGlSXoGsQ/5AFj0IxJS9Bv
+        id/Hg8bAGaOWoN8Q/xQPHINnDFqCvkv8DA8eATJSS9B3iD+EA0SIjJNL0GeP8Z0M4hcOEUEyepeg94g/
+        hYNEmIxfS9Br4tfgMBEoY78EHeLX5EARKsPhiV+bQ0WwWog/lINFuKmIP5bDRcCxiD+VA0bIoYhfi0NG
+        0Czi1+agEfYc4s/FYSPwMcSfmwNH6L+IvxSHjuAF8Zfm4BGe+GuJJRAfAAAAAAAAAAAAAAAAAAAAAADg
+        em02P7RrdGT4izazAAAAAElFTkSuQmCC
+</value>
   </data>
-  <data name="ic_arrow_drop_down_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_arrow_drop_down_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_arrow_drop_up_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_arrow_drop_up_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_arrow_upward_white_48dp_1x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_arrow_upward_white_48dp_1x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_down_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_down_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_fiber_manual_off_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_fiber_manual_off_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_fiber_manual_on_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_fiber_manual_on_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_keyboard_arrow_down_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_keyboard_arrow_down_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_keyboard_arrow_up_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_keyboard_arrow_up_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_pause_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_pause_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_running_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_running_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_up_white_48dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_up_white_48dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pictureBoxSpeedUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABGdBTUEAALGPC/xhBQAAAadJREFUeF7t
+        0Vlug0AQhGEOkNzRuUcW3y3LtUhXelqyowk0MIAC/yfNg20WV1UHAAAAAAAAAAAAAAAAAAAAAACwp77v
+        rzrlI7ZUyg+MsCUV7r3fYYQtqGjvu4oR1qSCvedBjLAGFev9pjBCSyrUe52EEVpQkd7nLIywhAr0Hhdh
+        hDlUnPfXBCNMocK8t6YYIUNFeV8p7+VkMcIQFeQ9paj4h3I+9EUSI9SoGO8n5af8cqvuZYQlVIj3knJX
+        ftB3dhhhKhXhfaRUyw/6zQ4jZKkA7yFlsPxg1zzaYYQxCu75U1LlB7uWEYYosOdOmVR+sHsYoUZBPW/K
+        rPKD3csItxTQc6YsKj/YMzTCpx6YdMwRFMzzpTQpP9izzj2CAnmulKblB3vmOUdQEM+Tskr5wZ59vhEU
+        wrOMWrX8YO+YMsJbue1/syBjI2xSfrB3ZUZ4LZcfgwX6a4RNyw/2To3wpT9Q8VIuOxYL9nuEXcoP9u7a
+        CMcsP1jAGGHX8oP9h9sRnsvXx2ZBn+zsXn6w/6IRLuUjAAAAAAAAAAAAAAAAAAAAAAAAgKSu+wYhqk9Y
+        Z/cKZwAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>
