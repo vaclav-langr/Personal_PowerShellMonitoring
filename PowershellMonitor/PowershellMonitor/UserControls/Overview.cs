@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows.Forms;
 
 namespace PowershellMonitor.UserControls
@@ -19,6 +12,22 @@ namespace PowershellMonitor.UserControls
         public Overview()
         {
             InitializeComponent();
+        }
+
+        public void AddOrUpdateStation(PowerShellStation station)
+        {
+            foreach(PowerShellStation pss in Controls)
+            {
+                if(pss.Equals(station))
+                {
+                    pss.SetStatus(station.Status);
+                    pss.SetUploadSpeed(station.UploadSpeed);
+                    pss.SetDownloadSpeed(station.DownloadSpeed);
+                    pss.SetServiceStatus(station.ServiceStatus);
+                    return;
+                }
+            }
+            AddStation(station);
         }
 
         public void AddStation(PowerShellStation station)

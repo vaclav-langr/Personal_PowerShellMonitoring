@@ -22,6 +22,8 @@ namespace PowershellMonitor
             ClientName = client;
             Username = username;
             setPassword(password);
+
+
         }
 
         public string ClientName {

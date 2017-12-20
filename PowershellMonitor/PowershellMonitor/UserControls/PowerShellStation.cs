@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PowershellMonitor.UserControls
 {
-    public partial class PowerShellStation : UserControl
+    public partial class PowerShellStation : UserControl, IEquatable<PowerShellStation>
     {
         // Station information
         public bool Status { get; private set; }
@@ -80,9 +74,9 @@ namespace PowershellMonitor.UserControls
         public void SetServiceStatus(string serviceStatus)
         {
             this.ServiceStatus = serviceStatus;
-            switch (serviceStatus)
+            switch (serviceStatus.ToLower())
             {
-                case "runnig": imageServiceStatus.Image = serviceRunning; break;
+                case "running": imageServiceStatus.Image = serviceRunning; break;
                 case "starting": imageServiceStatus.Image = serviceStarting; break;
                 case "stopping": imageServiceStatus.Image = serviceStopping; break;
                 case "stopped": imageServiceStatus.Image = serviceeStopped; break;
@@ -95,7 +89,7 @@ namespace PowershellMonitor.UserControls
         /// <param name="stationName">Custom station name</param>
         public void SetStationName(string stationName)
         {
-            this.StationName = StationName;
+            this.StationName = stationName;
             textStationName.Text = stationName;
         }
 
@@ -106,7 +100,7 @@ namespace PowershellMonitor.UserControls
         public void SetDownloadSpeed(int downloadSpeed)
         {
             this.DownloadSpeed = downloadSpeed;
-            textDownloadSpeed.Text = downloadSpeed + " MB/s";
+            textDownloadSpeed.Text = downloadSpeed + " kB/s";
         }
 
         /// <summary>
@@ -116,7 +110,7 @@ namespace PowershellMonitor.UserControls
         public void SetUploadSpeed(int uploadSpeed)
         {
             this.UploadSpeed = uploadSpeed;
-            textUploadSpeed.Text = uploadSpeed + " MB/s";
+            textUploadSpeed.Text = uploadSpeed + " kB/s";
         }
 
         /// <summary>
@@ -144,6 +138,11 @@ namespace PowershellMonitor.UserControls
                 textDownloadSpeed.Visible = false;
                 textUploadSpeed.Visible = false;
             }
+        }
+
+        public bool Equals(PowerShellStation other)
+        {
+            return StationName.Equals(other.StationName);
         }
     }
 }
