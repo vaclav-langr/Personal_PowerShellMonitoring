@@ -36,6 +36,7 @@
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -44,7 +45,7 @@
             this.panelOverview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(88)))), ((int)(((byte)(90)))));
             this.panelOverview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelOverview.Location = new System.Drawing.Point(0, 0);
-            this.panelOverview.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panelOverview.Margin = new System.Windows.Forms.Padding(6);
             this.panelOverview.Name = "panelOverview";
             this.panelOverview.Size = new System.Drawing.Size(1190, 840);
             this.panelOverview.TabIndex = 1;
@@ -55,14 +56,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1190, 840);
             this.Controls.Add(this.panelOverview);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PowerShellMonitor";
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyDown);
             this.ResumeLayout(false);
 
         }

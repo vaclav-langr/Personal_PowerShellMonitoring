@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PowershellMonitor.UserControls
@@ -80,9 +74,9 @@ namespace PowershellMonitor.UserControls
         public void SetServiceStatus(string serviceStatus)
         {
             this.ServiceStatus = serviceStatus;
-            switch (serviceStatus)
+            switch (serviceStatus.ToLower())
             {
-                case "runnig": imageServiceStatus.Image = serviceRunning; break;
+                case "running": imageServiceStatus.Image = serviceRunning; break;
                 case "starting": imageServiceStatus.Image = serviceStarting; break;
                 case "stopping": imageServiceStatus.Image = serviceStopping; break;
                 case "stopped": imageServiceStatus.Image = serviceeStopped; break;

@@ -25,12 +25,13 @@ namespace PowershellMonitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Generic.KeyNotFoundException Setting {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string users {
             get {
-                return ((global::System.Collections.Generic.KeyNotFoundException)(this["Setting"]));
+                return ((string)(this["users"]));
             }
             set {
-                this["Setting"] = value;
+                this["users"] = value;
             }
         }
     }
