@@ -67,7 +67,6 @@
     <Compile Include="Operations\UpdateStatus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingletonFactory.cs" />
     <Compile Include="UserControls\Overview.cs">
       <SubType>UserControl</SubType>
     </Compile>

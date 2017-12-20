@@ -21,6 +21,22 @@ namespace PowershellMonitor.UserControls
             InitializeComponent();
         }
 
+        public void AddOrUpdateStation(PowerShellStation station)
+        {
+            foreach(PowerShellStation pss in Controls)
+            {
+                if(pss.Equals(station))
+                {
+                    pss.SetStatus(station.Status);
+                    pss.SetUploadSpeed(station.UploadSpeed);
+                    pss.SetDownloadSpeed(station.DownloadSpeed);
+                    pss.SetServiceStatus(station.ServiceStatus);
+                    return;
+                }
+            }
+            AddStation(station);
+        }
+
         public void AddStation(PowerShellStation station)
         {
             station.Top = currentTop;

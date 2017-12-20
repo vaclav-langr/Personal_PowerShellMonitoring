@@ -47,7 +47,7 @@ namespace PowershellMonitor.Operations
 
         public override string getName()
         {
-            return "DownloadSpeed KB/s";
+            return "DownloadSpeed";
         }
     }
 }
