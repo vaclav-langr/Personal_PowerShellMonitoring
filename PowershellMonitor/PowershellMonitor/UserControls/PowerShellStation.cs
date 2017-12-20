@@ -9,6 +9,7 @@ namespace PowershellMonitor.UserControls
         // Station information
         public bool Status { get; private set; }
         public string ServiceStatus { get; private set; }
+        public string ServiceStartMode { get; private set; }
         public string StationName { get; private set; }
         public int DownloadSpeed { get; private set; }
         public int UploadSpeed { get; private set; }
@@ -29,19 +30,22 @@ namespace PowershellMonitor.UserControls
         private Label textStationName;
         private Label textDownloadSpeed;
         private Label textUploadSpeed;
+        private ToolTip toolTipServiceStartMode;
 
         // Variables
         private const string defaultSpeedUnit = "kB/s";
+        private const string defaultToolTipServiceStartModeText = "ServiceStartMode";
 
         /// <summary>
         /// Create new PowerShellStation visual component
         /// </summary>
         /// <param name="status">Indicate whether station is running (ON/OFF)</param>
-        /// <param name="serviceStatus"></param>
+        /// <param name="serviceStatus">Service can be running, starting, stopping, stopped</param>
+        /// <param name="serviceStartMode">Start mode can be automatic, boot, disabled, manual, system</param>
         /// <param name="stationName">Custom name</param>
         /// <param name="downloadSpeed">Download speed in MB/s</param>
         /// <param name="uploadSpeed">Upload speed in MS/s</param>
-        public PowerShellStation(bool status, string serviceStatus, string stationName, int downloadSpeed, int uploadSpeed)
+        public PowerShellStation(bool status, string serviceStatus, string serviceStartMode, string stationName, int downloadSpeed, int uploadSpeed)
         {
             // Initialize visual components
             InitializeComponent();
@@ -54,9 +58,11 @@ namespace PowershellMonitor.UserControls
             // Set variables and load data into visual components
             SetStatus(status);
             SetServiceStatus(serviceStatus);
+            SetServiceStartMode(serviceStartMode);
             SetStationName(stationName);
             SetDownloadSpeed(downloadSpeed);
             SetUploadSpeed(uploadSpeed);
+            SetToolTipServiceStartMode();
         }
 
         /// <summary>
@@ -65,6 +71,7 @@ namespace PowershellMonitor.UserControls
         /// <param name="status">Indicate whether station is running (ON/OFF)</param>
         public void SetStatus(bool status)
         {
+            if (this.Status == status) return;
             this.Status = status;
             imageStatus.Image = status ? statusOn : statusOff;
             SetComponentsForStatus(status);
@@ -76,6 +83,7 @@ namespace PowershellMonitor.UserControls
         /// <param name="status">Service can be running, starting, stopping, stopped</param>
         public void SetServiceStatus(string serviceStatus)
         {
+            if (this.ServiceStartMode.Equals(serviceStatus)) return;
             this.ServiceStatus = serviceStatus;
             switch (serviceStatus.ToLower())
             {
@@ -87,11 +95,23 @@ namespace PowershellMonitor.UserControls
         }
 
         /// <summary>
+        /// Set and show service start mode
+        /// https://msdn.microsoft.com/cs-cz/library/system.serviceprocess.servicestartmode(v=vs.110).aspx
+        /// </summary>
+        /// <param name="serviceStartMode">Start mode can be automatic, boot, disabled, manual, system</param>
+        public void SetServiceStartMode(string serviceStartMode)
+        {
+            if (this.ServiceStartMode.Equals(serviceStartMode)) return;
+            this.ServiceStartMode = serviceStartMode;
+        }
+
+        /// <summary>
         /// Set and show station name
         /// </summary>
         /// <param name="stationName">Custom station name</param>
         public void SetStationName(string stationName)
         {
+            if (this.StationName.Equals(stationName)) return;
             this.StationName = stationName;
             textStationName.Text = stationName;
         }
@@ -102,6 +122,7 @@ namespace PowershellMonitor.UserControls
         /// <param name="downloadSpeed">Download speed in MB/s</param>
         public void SetDownloadSpeed(int downloadSpeed)
         {
+            if (this.DownloadSpeed == downloadSpeed) return;
             this.DownloadSpeed = downloadSpeed;
             textDownloadSpeed.Text = downloadSpeed + " " + defaultSpeedUnit;
         }
@@ -112,6 +133,7 @@ namespace PowershellMonitor.UserControls
         /// <param name="uploadSpeed">Upload speed in MB/s</param>
         public void SetUploadSpeed(int uploadSpeed)
         {
+            if (this.UploadSpeed == uploadSpeed) return;
             this.UploadSpeed = uploadSpeed;
             textUploadSpeed.Text = uploadSpeed + " " + defaultSpeedUnit;
         }
@@ -141,6 +163,28 @@ namespace PowershellMonitor.UserControls
                 textDownloadSpeed.Visible = false;
                 textUploadSpeed.Visible = false;
             }
+        }
+
+        /// <summary>
+        /// Set ToolTip for serviceStartMode at serviceStatus image
+        /// https://stackoverflow.com/questions/1339524/c-how-do-i-add-a-tooltip-to-a-control
+        /// </summary>
+        private void SetToolTipServiceStartMode()
+        {
+            // Create the ToolTip and associate with the Form container.
+            toolTipServiceStartMode = new ToolTip
+            {
+                // Set up the delays for the ToolTip.
+                AutoPopDelay = 5000,
+                InitialDelay = 1000,
+                ReshowDelay = 500,
+
+                // Force the ToolTip text to be displayed whether or not the form is active.
+                ShowAlways = true
+            };
+
+            // Set up the ToolTip text for ServiceStatus image
+            toolTipServiceStartMode.SetToolTip(this.imageServiceStatus, defaultToolTipServiceStartModeText + ": " + this.ServiceStartMode);
         }
 
         /// <summary>
