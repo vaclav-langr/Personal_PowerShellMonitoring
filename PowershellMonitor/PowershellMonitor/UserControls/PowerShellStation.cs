@@ -46,6 +46,14 @@ namespace PowershellMonitor.UserControls
         private const string defaultToolTipServiceStartModeText = "ServiceStartMode";
         private const string serviceRunningTitle = "Service is runnig";
 
+        /// <summary>
+        /// Sets Click event handler.
+        /// </summary>
+        /// <param name="stationClick">Custom action</param>
+        internal void SetClick(EventHandler stationClick)
+        {
+            pictureBoxPowerShell.Click += stationClick;
+        }
 
         /// <summary>
         /// Create new PowerShellStation visual component without data input
@@ -246,20 +254,6 @@ namespace PowershellMonitor.UserControls
         public bool Equals(PowerShellStation other)
         {
             return StationName.Equals(other.StationName);
-        }
-
-        /// <summary>
-        /// Run PowerShell script
-        /// </summary>
-        private void PictureBoxPowerShell_Click(object sender, EventArgs e)
-        {
-            /* DELETE THIS */
-            notification.ShowBalloonTip(
-                3000,
-                "Not implemented yet",
-                "This function is not implemented yet, please search for PictureBoxPowerShell_Click function in PowerShellStation.cs",
-                ToolTipIcon.Info);
-            /* DELETE THIS */
         }
 
         /// <summary>

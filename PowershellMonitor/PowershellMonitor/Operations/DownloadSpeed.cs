@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
@@ -44,7 +45,7 @@ namespace PowershellMonitor.Operations
                 }
                 result = new KeyValuePair<string, string>(getName(), (maximum / 1000).ToString());
             }
-            catch (Exception e) { }
+            catch (Exception e) { Debug.WriteLine(e.Message); }
             finally
             {
                 closeConnection();

@@ -86,7 +86,6 @@
             this.pictureBoxPowerShell.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPowerShell.TabIndex = 7;
             this.pictureBoxPowerShell.TabStop = false;
-            this.pictureBoxPowerShell.Click += new System.EventHandler(this.PictureBoxPowerShell_Click);
             this.pictureBoxPowerShell.MouseEnter += new System.EventHandler(this.PictureBoxPowerShell_MouseEnter);
             this.pictureBoxPowerShell.MouseLeave += new System.EventHandler(this.PictureBoxPowerShell_MouseLeave);
             // 

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Net.NetworkInformation;
@@ -22,8 +24,14 @@ namespace PowershellMonitor
             ClientName = client;
             Username = username;
             setPassword(password);
+        }
 
-
+        public void openPowerShell()
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = "powershell";
+            p.StartInfo.Arguments = "-noexit Enter-PSSession -ComputerName \"" + ClientName + "\" -Credential " + Username;
+            p.Start();
         }
 
         public string ClientName {

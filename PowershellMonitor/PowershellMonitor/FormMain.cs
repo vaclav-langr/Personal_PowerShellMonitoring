@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using PowershellMonitor.UserControls;
 using System.Linq;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace PowershellMonitor
 {
@@ -37,6 +38,18 @@ namespace PowershellMonitor
             };
         }
 
+        private void StationClick(object sender, EventArgs e) {
+            PowerShellStation pss = (PowerShellStation)(sender as PictureBox).Parent;
+            foreach(KeyValuePair<Client, BackgroundWorker> kvp in clients)
+            {
+                if(kvp.Key.ClientName.Equals(pss.StationName))
+                {
+                    kvp.Key.openPowerShell();
+                    return;
+                }
+            }
+        }
+
         private void Form1_Shown(object sender, EventArgs e)
         {
             Timer1_Tick(null, null);
@@ -57,6 +70,7 @@ namespace PowershellMonitor
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             PowerShellStation pss = new PowerShellStation(notification);
+            pss.SetClick(StationClick);
             foreach(KeyValuePair<string, string> kvp in (List<KeyValuePair<string, string>>)e.Result)
             {
                 switch(kvp.Key)
@@ -96,7 +110,7 @@ namespace PowershellMonitor
 
         public void SettingsForm_Closing()
         {
-            refreshClientsList();
+            RefreshClientsList();
             timer1.Enabled = true;
         }
 
