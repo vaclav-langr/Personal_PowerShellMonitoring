@@ -1,14 +1,13 @@
-﻿using System.Linq;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace PowershellMonitor.UserControls
 {
     public partial class Overview : UserControl
     {
         // Variables
-        private static int initialTop = 25; // Default distance from top for first PowerShellStation row
+        private static int initialTop = 15; // Default distance from top for first PowerShellStation row
         private int indentTop = initialTop;  // How far from top is row in Overview (increase with new rows)
-        private int indentLeft = 35;  // Indent of PowerShellStation row from left side of Overview
+        private int indentLeft = 25;  // Indent of PowerShellStation row from left side of Overview
 
         /// <summary>
         /// Create Overview with is used to show PowerShellStation rows

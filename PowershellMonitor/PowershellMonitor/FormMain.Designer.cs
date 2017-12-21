@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panelOverview = new System.Windows.Forms.Panel();
+            this.overview = new PowershellMonitor.UserControls.Overview();
             this.SuspendLayout();
             // 
             // timer1
@@ -40,24 +40,25 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
-            // panelOverview
+            // overview
             // 
-            this.panelOverview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(88)))), ((int)(((byte)(90)))));
-            this.panelOverview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelOverview.Location = new System.Drawing.Point(0, 0);
-            this.panelOverview.Name = "panelOverview";
-            this.panelOverview.Size = new System.Drawing.Size(550, 437);
-            this.panelOverview.TabIndex = 1;
+            this.overview.AutoScroll = true;
+            this.overview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(88)))), ((int)(((byte)(90)))));
+            this.overview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overview.Location = new System.Drawing.Point(0, 0);
+            this.overview.Name = "overview";
+            this.overview.Size = new System.Drawing.Size(580, 437);
+            this.overview.TabIndex = 0;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 437);
-            this.Controls.Add(this.panelOverview);
+            this.ClientSize = new System.Drawing.Size(580, 437);
+            this.Controls.Add(this.overview);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -70,7 +71,7 @@
 
         #endregion
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Panel panelOverview;
+        private UserControls.Overview overview;
     }
 }
 

@@ -1,40 +1,40 @@
 ﻿using System;
-using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using PowershellMonitor.UserControls;
 using System.Linq;
+using System.Drawing;
 
 namespace PowershellMonitor
 {
     public partial class FormMain : Form
     {
-        Overview overview = new Overview();
-
+        NotifyIcon notification;
         Dictionary<Client, BackgroundWorker> clients = new Dictionary<Client, BackgroundWorker>();
+
         public FormMain()
         {
             InitializeComponent();
-
             RefreshClientsList();
-
-            //////////////////////////
-            panelOverview.Controls.Add(overview);
-            overview.Dock = DockStyle.Fill;
-            overview.Show();
-            //////////////////////////
 
             foreach (KeyValuePair<Client, BackgroundWorker> kvp in clients)
             {
-                kvp.Key.addOperation(new Operations.UpdateStatus());
                 kvp.Key.addOperation(new Operations.UpdateStartType());
                 kvp.Key.addOperation(new Operations.DownloadSpeed());
                 kvp.Key.addOperation(new Operations.UploadSpeed());
+                kvp.Key.addOperation(new Operations.UpdateStatus());
 
                 kvp.Value.DoWork += BackgroundWorker_DoWork;
                 kvp.Value.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
             }
+
+            // Initialize notifcation
+            notification = new NotifyIcon()
+            {
+                Icon = SystemIcons.Application,
+                Visible = true
+            };
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace PowershellMonitor
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            PowerShellStation pss = new PowerShellStation(false, "", "", -1, -1);
+            PowerShellStation pss = new PowerShellStation(notification);
             foreach(KeyValuePair<string, string> kvp in (List<KeyValuePair<string, string>>)e.Result)
             {
                 switch(kvp.Key)
@@ -71,7 +71,7 @@ namespace PowershellMonitor
                         pss.SetServiceStatus(kvp.Value);
                         break;
                     case "UpdateStartType":
-                        //missing
+                        pss.SetServiceStartMode(kvp.Value);
                         break;
                     case "UploadSpeed":
                         pss.SetUploadSpeed((int)Math.Round(float.Parse(kvp.Value)));
