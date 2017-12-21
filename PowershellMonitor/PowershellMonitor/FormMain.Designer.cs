@@ -46,25 +46,27 @@
             this.overview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(88)))), ((int)(((byte)(90)))));
             this.overview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overview.Location = new System.Drawing.Point(0, 0);
+            this.overview.Margin = new System.Windows.Forms.Padding(12);
             this.overview.Name = "overview";
-            this.overview.Size = new System.Drawing.Size(580, 437);
+            this.overview.Size = new System.Drawing.Size(1160, 1074);
             this.overview.TabIndex = 0;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 437);
+            this.ClientSize = new System.Drawing.Size(1160, 1074);
             this.Controls.Add(this.overview);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PowerShellMonitor";
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyDown);
+            this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.ResumeLayout(false);
 
         }

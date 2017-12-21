@@ -4,8 +4,6 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using PowershellMonitor.UserControls;
 using System.Linq;
-using System.Drawing;
-using System.Diagnostics;
 
 namespace PowershellMonitor
 {
@@ -33,9 +31,23 @@ namespace PowershellMonitor
             // Initialize notifcation
             notification = new NotifyIcon()
             {
-                Icon = SystemIcons.Application,
-                Visible = true
+                Icon = this.Icon,
+                Visible = true,
+                Text = "PowerShell Monitoring"
             };
+            notification.MouseClick += Notification_Click;
+            
+        }
+
+        private void Notification_Click(object sender, MouseEventArgs e)
+        {
+            if (Visible)
+            {
+                Hide();
+            } else {
+                Show();
+                this.WindowState = FormWindowState.Normal;
+            }
         }
 
         private void StationClick(object sender, EventArgs e) {
@@ -146,6 +158,14 @@ namespace PowershellMonitor
             {
                 SettingsForm sf = new SettingsForm(this);
                 sf.Show();
+            }
+        }
+
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                Hide();
             }
         }
     }
