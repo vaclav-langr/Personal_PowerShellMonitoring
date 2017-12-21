@@ -133,6 +133,16 @@ namespace PowershellMonitor.Properties {
         /// <summary>
         ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_fiber_manual_on_yellow_48dp_2x {
+            get {
+                object obj = ResourceManager.GetObject("ic_fiber_manual_on_yellow_48dp_2x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_keyboard_arrow_down_white_48dp_2x {
             get {
                 object obj = ResourceManager.GetObject("ic_keyboard_arrow_down_white_48dp_2x", resourceCulture);
@@ -187,6 +197,26 @@ namespace PowershellMonitor.Properties {
             get {
                 object obj = ResourceManager.GetObject("Icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap powershell {
+            get {
+                object obj = ResourceManager.GetObject("powershell", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap powershellMouseOver {
+            get {
+                object obj = ResourceManager.GetObject("powershellMouseOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

@@ -126,15 +126,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\powershellMouseOver.png" />
+    <None Include="Resources\ic_fiber_manual_on_white_48dp_2x.png" />
+    <None Include="Resources\ic_fiber_manual_on_yellow_48dp_2x.png" />
+    <None Include="Resources\powershell.png" />
     <None Include="Resources\ic_running_white_48dp_2x.png" />
     <None Include="Resources\ic_pause_white_48dp_2x.png" />
     <None Include="Resources\ic_down_white_48dp_2x.png" />
     <None Include="Resources\ic_up_white_48dp_2x.png" />
-    <None Include="Resources\ic_call_received_white_48dp_2x.png" />
-    <None Include="Resources\ic_call_made_white_48dp_2x.png" />
-    <None Include="Resources\ic_autorenew_white_48dp_2x.png" />
     <None Include="Resources\ic_fiber_manual_off_white_48dp_2x.png" />
-    <None Include="Resources\ic_fiber_manual_on_white_48dp_2x.png" />
     <None Include="Resources\ic_arrow_drop_up_white_48dp_2x.png" />
     <None Include="Resources\ic_arrow_drop_down_white_48dp_2x.png" />
     <None Include="Resources\ic_keyboard_arrow_down_white_48dp_2x.png" />
@@ -142,6 +142,7 @@
     <None Include="Resources\ic_arrow_upward_white_48dp_1x.png" />
     <None Include="Resources\ic_keyboard_arrow_up_white_48dp_2x.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

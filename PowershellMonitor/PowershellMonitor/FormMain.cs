@@ -1,49 +1,49 @@
 ﻿using System;
-using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using PowershellMonitor.UserControls;
 using System.Linq;
+using System.Drawing;
 
 namespace PowershellMonitor
 {
     public partial class FormMain : Form
     {
-        Overview overview = new Overview();
-
+        NotifyIcon notification;
         Dictionary<Client, BackgroundWorker> clients = new Dictionary<Client, BackgroundWorker>();
+
         public FormMain()
         {
             InitializeComponent();
-
-            refreshClientsList();
-
-            //////////////////////////
-            panelOverview.Controls.Add(overview);
-            overview.Dock = DockStyle.Fill;
-            overview.Show();
-            //////////////////////////
+            RefreshClientsList();
 
             foreach (KeyValuePair<Client, BackgroundWorker> kvp in clients)
             {
-                kvp.Key.addOperation(new Operations.UpdateStatus());
                 kvp.Key.addOperation(new Operations.UpdateStartType());
                 kvp.Key.addOperation(new Operations.DownloadSpeed());
                 kvp.Key.addOperation(new Operations.UploadSpeed());
+                kvp.Key.addOperation(new Operations.UpdateStatus());
 
-                kvp.Value.DoWork += backgroundWorker_DoWork;
-                kvp.Value.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted;
+                kvp.Value.DoWork += BackgroundWorker_DoWork;
+                kvp.Value.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
             }
+
+            // Initialize notifcation
+            notification = new NotifyIcon()
+            {
+                Icon = SystemIcons.Application,
+                Visible = true
+            };
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            timer1_Tick(null, null);
+            Timer1_Tick(null, null);
             timer1.Enabled = true;
         }
 
-        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             Client c = (Client)e.Argument;
 
@@ -54,9 +54,9 @@ namespace PowershellMonitor
             e.Result = result;
         }
 
-        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            PowerShellStation pss = new PowerShellStation(false, "", "", -1, -1);
+            PowerShellStation pss = new PowerShellStation(notification);
             foreach(KeyValuePair<string, string> kvp in (List<KeyValuePair<string, string>>)e.Result)
             {
                 switch(kvp.Key)
@@ -71,7 +71,7 @@ namespace PowershellMonitor
                         pss.SetServiceStatus(kvp.Value);
                         break;
                     case "UpdateStartType":
-                        //missing
+                        pss.SetServiceStartMode(kvp.Value);
                         break;
                     case "UploadSpeed":
                         pss.SetUploadSpeed((int)Math.Round(float.Parse(kvp.Value)));
@@ -84,7 +84,7 @@ namespace PowershellMonitor
             overview.AddOrUpdateStation(pss);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             foreach (KeyValuePair<Client, BackgroundWorker> kvp in clients)
             {
@@ -100,7 +100,7 @@ namespace PowershellMonitor
             timer1.Enabled = true;
         }
 
-        private void refreshClientsList()
+        private void RefreshClientsList()
         {
             List<string> users = Properties.Settings.Default.users.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             string[] data;

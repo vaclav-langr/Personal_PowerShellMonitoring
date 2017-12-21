@@ -37,7 +37,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(88)))), ((int)(((byte)(90)))));
             this.Name = "Overview";
-            this.Size = new System.Drawing.Size(550, 395);
+            this.Size = new System.Drawing.Size(540, 395);
             this.ResumeLayout(false);
 
         }
