@@ -12,7 +12,7 @@ namespace PowershellMonitor.Operations
     {
         public override KeyValuePair<string, string> doOperation(Runspace rs)
         {
-            KeyValuePair<string, string> result = new KeyValuePair<string, string>(getName(), "NotFound!");
+            KeyValuePair<string, string> result = new KeyValuePair<string, string>();
             Regex pattern = new Regex(@"^.*\sodeslané.*\s\d*,\d*");
             Regex pattern2 = new Regex(@"\d*,\d*");
             Match m, m2;
@@ -21,27 +21,35 @@ namespace PowershellMonitor.Operations
 
             PowerShell ps = openConnection(rs);
             ps.AddScript("Get-Counter -Counter (((Get-Counter -listset 'rozhraní sítě').paths) | sls \"Bajty\")");
-            Collection<PSObject> commandResult = ps.Invoke();
-            foreach (PSObject o in commandResult)
+            try
             {
-                s = o.Properties["Readings"].Value.ToString();
-                s = s.Replace("\n", " ");
-                List<string> list = s.Split(new string[] { "\\\\" }, StringSplitOptions.RemoveEmptyEntries).ToList<string>();
-                foreach(string input in list)
+                Collection<PSObject> commandResult = ps.Invoke();
+                foreach (PSObject o in commandResult)
                 {
-                    m = pattern.Match(input);
-                    if(m.Success)
+                    s = o.Properties["Readings"].Value.ToString();
+                    s = s.Replace("\n", " ");
+                    List<string> list = s.Split(new string[] { "\\\\" }, StringSplitOptions.RemoveEmptyEntries).ToList<string>();
+                    foreach (string input in list)
                     {
-                        m2 = pattern2.Match(input);
-                        if(maximum < float.Parse(m2.Value))
+                        m = pattern.Match(input);
+                        if (m.Success)
                         {
-                            maximum = float.Parse(m2.Value);
+                            m2 = pattern2.Match(input);
+                            if (maximum < float.Parse(m2.Value))
+                            {
+                                maximum = float.Parse(m2.Value);
+                            }
                         }
                     }
                 }
+                result = new KeyValuePair<string, string>(getName(), (maximum / 1000).ToString());
+            } catch(Exception e)
+            {
             }
-            result = new KeyValuePair<string, string>(getName(), (maximum / 1000).ToString());
-            closeConnection();
+            finally
+            {
+                closeConnection();
+            }
             return result;
         }
 
