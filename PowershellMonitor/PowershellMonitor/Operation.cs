@@ -23,10 +23,10 @@ namespace PowershellMonitor
 
         protected PowerShell openConnection(Runspace rs)
         {
-            rs.Open();
-            connection = PowerShell.Create();
-            connection.Runspace = rs;
-            return connection;
+                rs.Open();
+                connection = PowerShell.Create();
+                connection.Runspace = rs;
+                return connection;
         }
 
         protected void closeConnection()

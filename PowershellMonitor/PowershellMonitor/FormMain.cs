@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using PowershellMonitor.UserControls;
 using System.Linq;
+using System.Diagnostics;
+using System.Management.Automation.Remoting;
 
 namespace PowershellMonitor
 {
@@ -75,7 +77,15 @@ namespace PowershellMonitor
             List<KeyValuePair<string, string>> result = new List<KeyValuePair<string, string>>();
             result.Add(new KeyValuePair<string, string>("Client", c.ClientName));
             result.Add(new KeyValuePair<string, string>("Online", c.isOnline().ToString()));
-            result.AddRange(c.updateInfo());
+            try
+            {
+                result.AddRange(c.updateInfo());
+            } catch(PSRemotingTransportException ex)
+            {
+                MessageBox.Show("Invalid username or password for client " + c.ClientName);
+                SettingsForm sf = new SettingsForm(this);
+                sf.Show();
+            }
             e.Result = result;
         }
 
@@ -123,7 +133,6 @@ namespace PowershellMonitor
         public void SettingsForm_Closing()
         {
             RefreshClientsList();
-            timer1.Enabled = true;
         }
 
         private void RefreshClientsList()
@@ -135,13 +144,14 @@ namespace PowershellMonitor
             {
                 data = user.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
                 c = new Client(data[0], data[1], data[2]);
-
+                
                 bool has = false;
                 foreach(KeyValuePair<Client, BackgroundWorker> kvp in clients)
                 {
                     if(kvp.Key.Equals(c))
                     {
                         has = true;
+                        //update client
                     }
                 }
                 if(!has)
@@ -153,7 +163,6 @@ namespace PowershellMonitor
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
-            timer1.Enabled = false;
             if(e.Control && e.KeyCode == Keys.S)
             {
                 SettingsForm sf = new SettingsForm(this);
@@ -167,6 +176,11 @@ namespace PowershellMonitor
             {
                 Hide();
             }
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            notification.Visible = false;
         }
     }
 }

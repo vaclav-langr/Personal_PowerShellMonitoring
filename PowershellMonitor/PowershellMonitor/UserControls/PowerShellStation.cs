@@ -134,12 +134,6 @@ namespace PowershellMonitor.UserControls
                 }
             }
 
-            // Service stopped or stopping
-            else
-            {
-                imageStatus.Image = statusOn;  // Show ON color
-            }
-
             // Change image of service status
             this.ServiceStatus = serviceStatus;
             switch (serviceStatus)

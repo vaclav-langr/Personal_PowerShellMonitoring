@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Management.Automation;
+using System.Management.Automation.Remoting;
 using System.Management.Automation.Runspaces;
 using System.Net.NetworkInformation;
 using System.Security;
@@ -114,8 +115,17 @@ namespace PowershellMonitor
             foreach (Operation o in operations)
             {
                 var runspace = RunspaceFactory.CreateRunspace(ci);
-                var result = o.doOperation(runspace);
-                data.Add(result);
+                try
+                {
+                    var result = o.doOperation(runspace);
+                    data.Add(result);
+                } catch(PSRemotingTransportException e)
+                {
+                    throw e;
+                } catch(PSRemotingDataStructureException e)
+                {
+
+                }
             }
             return data;
         }
